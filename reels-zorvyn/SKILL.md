@@ -19,7 +19,15 @@ Referências: "Reel A – Editorial 5 Skills", "Reel B – Prédio Equipe", "Ree
 
 ## Voz
 - Masculina, pt-BR, dinâmica e natural, ritmo rápido (cerca de 2 palavras por segundo), com ênfase nas falas de cliente ("Tá caro!", "Vou pensar!").
-- Não usar voz robotizada (Piper). Nome exato da voz dos Reels originais: PREENCHER quando confirmado pelo Patrik.
+- Voz: **pt-BR-AntonioNeural** (Microsoft, via `edge-tts`), com `--rate +8%`. É a única voz masculina pt-BR dessa família.
+- Para usar `edge-tts` no container, a CA do proxy precisa estar no bundle do certifi, senão dá erro de certificado:
+  ```python
+  C='/root/.local/lib/python3.13/site-packages/certifi/cacert.pem'
+  b=open('/root/.ccr/ca-bundle.crt').read(); c=open(C).read()
+  miss=[x+'-----END CERTIFICATE-----\n' for x in b.split('-----END CERTIFICATE-----') if 'BEGIN' in x and (x+'-----END CERTIFICATE-----') not in c]
+  open(C,'a').write('\n'+''.join(miss))
+  ```
+- Não usar Piper (robotizado) nem Kokoro.
 
 ## Roteiro
 1. Gancho direto na primeira frase.
